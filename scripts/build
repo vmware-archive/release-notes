@@ -2,6 +2,11 @@
 
 set -e -u
 
+if [ "$#" -lt 1 ]; then
+  echo "usage: $0 <version>" >&2
+  exit 1
+fi
+
 cd $(dirname $0)/..
 
 version="$1"
@@ -9,7 +14,7 @@ shift
 
 go install github.com/vito/booklit/cmd/booklit
 
-booklit -i ../lit/index.lit \
+booklit -i docs/lit/index.lit \
   --plugin github.com/concourse/docs/go/docs \
   --plugin github.com/concourse/docs/go/resource-type-list \
   --text-file-extension md \

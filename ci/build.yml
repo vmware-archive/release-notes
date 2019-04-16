@@ -1,0 +1,19 @@
+---
+platform: linux
+
+image_resource:
+  type: registry-image
+  source: {repository: golang}
+
+inputs:
+- name: release-notes
+  path: .
+- name: docs
+- name: version
+  optional: true
+
+outputs:
+- name: built-notes
+
+run:
+  path: ci/build
