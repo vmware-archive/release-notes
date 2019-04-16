@@ -13,5 +13,9 @@ referenced and linked to from the release notes.
 ## Rendering the release notes
 
 ```bash
+# used for references from the release notes
+git clone https://github.com/concourse/docs
+
+# build and output markdown for the given version
 ./scripts/build VERSION
 ```
