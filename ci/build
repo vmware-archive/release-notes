@@ -11,5 +11,5 @@ else
   exit 1
 fi
 
-echo "v$version" > ./built-notes/release-name
+echo "$version" > ./built-notes/release-name
 ./scripts/build $version > ./built-notes/notes.md
