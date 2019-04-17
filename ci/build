@@ -3,7 +3,7 @@
 cd $(dirname $0)/..
 
 if [ -d version ]; then
-  version=$(cat version/version)
+  version=v$(cat version/version)
 elif [ "$#" -eq 1 ]; then
   version=$1
 else
