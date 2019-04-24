@@ -1,4 +1,4 @@
-#### <sub><sup><a name="{{.Partial "Target" | render}}" href="#{{.Partial "Target" | render}}"></a></sup></sub> {{range $index, $tag := .Partial "Tags"}}{{if $index}}, {{end}}{{$tag | render}}{{end}}
+#### <sub><sup><a name="{{.Partial "Target" | render}}" href="#{{.Partial "Target" | render}}">:link:</a></sup></sub> {{range $index, $tag := .Partial "Tags"}}{{if $index}}, {{end}}{{$tag | render}}{{end}}
 
 * {{.Content | render | joinLines "  "}}
 {{""}}
