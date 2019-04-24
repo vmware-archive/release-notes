@@ -14,7 +14,7 @@ function gh() {
 }
 
 seen_from=false
-ls lit/release-notes/*.lit | sort -V | while read path; do
+ls lit/*.lit | sort -V | while read path; do
   version=$(basename $path | sed s/.lit//)
 
   if [ -n "$from" ]; then
@@ -36,7 +36,7 @@ ls lit/release-notes/*.lit | sort -V | while read path; do
     exit 1
   fi
 
-  jq -n '{body: $body}' --rawfile body <(./scripts/render-release-notes $version) | \
+  jq -n '{body: $body}' --rawfile body <(./scripts/build $version) | \
     gh /repos/concourse/concourse/releases/$release_id \
       -XPATCH \
       -H "Content-type: application/json" \
