@@ -1,0 +1,111 @@
+\use-plugin{concourse-docs}
+
+\release-version{5.2.0}
+\release-date{2019-5-XX}
+
+\note{fix,breaking}{
+  Change flag for \code{fly builds --teams} to \code{-n} from \code{-t} to make
+  it consistent across \code{fly}. Thanks to a PR by \ghuser{stigtermichiel}.
+}
+
+\note{feature}{
+  As We move toward adding more RBAC roles, a new pipeline-operator role was
+  added (thanks to \ghuser{tlwr} and \ghuser{paroxp}) which is between viewer
+  and member and can:
+
+  - AbortBuild
+  - CreateJobBuild
+  - PauseJob
+  - UnpauseJob
+  - ClearTaskCache
+  - PauseResource
+  - UnpauseResource
+  - CheckResource
+  - CheckResourceWebHook
+  - CheckResourceType
+  - EnableResourceVersion
+  - DisableResourceVersion
+  - PinResourceVersion
+  - UnpinResource
+  - SetPinCommentOnResource
+  - PausePipeline
+  - UnpausePipeline
+
+  A use case for that is when an entity wants a user to only be able operate a
+  pipeline without being able to change the pipeline configuration.
+}
+
+\note{feature}{
+  Ability to audit actions was added. Auditing currently logs API calls to the
+  default logger (DEBUG level) using flags to enable specific auditing groups.
+  Thanks to \ghuser{loghen41}.
+
+  The specific flags that can be enabled are:
+
+	\code{--enable-build-auditing}			auditing for builds api requests
+	\code{--enable-container-auditing}	auditing for containers api requests
+	\code{--enable-job-auditing}				auditing for jobs api requests
+	\code{--enable-pipeline-auditing} 	auditing for pipelines api requests
+	\code{--enable-resource-auditing} 	auditing for resources api requests
+	\code{--enable-system-auditing}	    auditing for system transactions api requests
+	\code{--enable-team-auditing}		    auditing for teams api requests
+	\code{--enable-worker-auditing}	    auditing for workers api requests
+	\code{--enable-volume-auditing}	    auditing for volumes api requests
+}
+
+\note{feature}{
+  \ghuser{ralekseenkov} has done a bunch of refactors for the \reference{creds}{secret managers}
+  integration with Concourse.
+
+  Also, implemented a generic secret cache for all secret managers.
+
+  Before, secret managers had logic inside to take variables and look up
+  secrets in different paths based on team name and pipeline name. This made it
+  really difficult to introduce proper secret caching.
+
+  It also drops custom cache implementation for Vault and introduces a generic
+  implementation based on patrickmn/go-cache.
+}
+
+\note{feature}{
+  Added new \code{in_parallel} \reference{steps}{step} to be able to run steps in parallel with more
+  control with additional keywords, \code{limit} which will limit the number
+  of parallel steps, and \code{fail_fast} which will interrupt currently running
+  steps and prevent scheduling pending steps. Thanks to a PR by \ghuser{itsdalmo}.
+}
+
+\node{security}{
+  Restrict SSH MAC algorithms to a secure set overriding the GO defaults which
+  allow weaker algorithms.
+}
+
+\note{feature}{
+  Now Concourse is compatible with the latest \reference{credhub-credential-manager}{Credhub} 2.x (Currently not
+  supporting 2.1 due to a bug, but supporting all later versions).
+  Concourse continues to support the latest version of 1.9.x
+}
+
+\note{feature}{
+  Add ability set a name for the Concourse cluster which will be displayed on
+  the dashboard page by setting \code{cluster-name} flag.
+}
+
+\note{fix}{
+  Fixed a bug with Dex cloudfoundry connector when the user is a member of many
+  teams. Thanks to \ghuser{daniellavoie}.
+}
+
+\note{fix}{
+  Fixed a bug where aborting a started build prior to an ATC tracking
+  it will result in an orphaned, still running, uncompleted build.
+}
+
+\note{fix}{
+  \code{fly prune-worker --all-stalled} was fixed to only return a warning if
+  no stalled workers are found, instead of an error.
+}
+
+\note{fix}{
+  Concourse quickstart was fixed to ignore the
+  \code{--worker-tsa-worker-private-key} flag.
+}
