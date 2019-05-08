@@ -1,7 +1,6 @@
 \use-plugin{concourse-docs}
 
 \release-version{5.2.0}
-\release-date{2019-5-XX}
 
 \note{fix,breaking}{
   Change flag for \code{fly builds --teams} to \code{-n} from \code{-t} to make
@@ -13,23 +12,41 @@
   added (thanks to \ghuser{tlwr} and \ghuser{paroxp}) which is between viewer
   and member and can:
 
-  - AbortBuild
-  - CreateJobBuild
-  - PauseJob
-  - UnpauseJob
-  - ClearTaskCache
-  - PauseResource
-  - UnpauseResource
-  - CheckResource
-  - CheckResourceWebHook
-  - CheckResourceType
-  - EnableResourceVersion
-  - DisableResourceVersion
-  - PinResourceVersion
-  - UnpinResource
-  - SetPinCommentOnResource
-  - PausePipeline
-  - UnpausePipeline
+  \list{
+  AbortBuild
+  }{
+  CreateJobBuild
+  }{
+  PauseJob
+  }{
+  UnpauseJob
+  }{
+  ClearTaskCache
+  }{
+  PauseResource
+  }{
+  UnpauseResource
+  }{
+  CheckResource
+  }{
+  CheckResourceWebHook
+  }{
+  CheckResourceType
+  }{
+  EnableResourceVersion
+  }{
+  DisableResourceVersion
+  }{
+  PinResourceVersion
+  }{
+  UnpinResource
+  }{
+  SetPinCommentOnResource
+  }{
+  PausePipeline
+  }{
+  UnpausePipeline
+  }
 
   A use case for that is when an entity wants a user to only be able operate a
   pipeline without being able to change the pipeline configuration.
@@ -41,16 +58,27 @@
   Thanks to \ghuser{loghen41}.
 
   The specific flags that can be enabled are:
-
-	\code{--enable-build-auditing}			auditing for builds api requests
-	\code{--enable-container-auditing}	auditing for containers api requests
-	\code{--enable-job-auditing}				auditing for jobs api requests
-	\code{--enable-pipeline-auditing} 	auditing for pipelines api requests
-	\code{--enable-resource-auditing} 	auditing for resources api requests
-	\code{--enable-system-auditing}	    auditing for system transactions api requests
-	\code{--enable-team-auditing}		    auditing for teams api requests
-	\code{--enable-worker-auditing}	    auditing for workers api requests
-	\code{--enable-volume-auditing}	    auditing for volumes api requests
+  \table{
+  \table-row{flag}{description}
+  }{
+  \table-row{\code{--enable-build-auditing}}{auditing for builds api requests}
+  }{
+  \table-row{\code{--enable-container-auditing}}{auditing for containers api requests}
+	}{
+  \table-row{\code{--enable-job-auditing}}{auditing for jobs api requests}
+	}{
+  \table-row{\code{--enable-pipeline-auditing}}{auditing for pipelines api requests}
+	}{
+  \table-row{\code{--enable-resource-auditing}}{auditing for resources api requests}
+	}{
+  \table-row{\code{--enable-system-auditing}}{auditing for system transactions api requests}
+	}{
+  \table-row{\code{--enable-team-auditing}}{auditing for teams api requests}
+	}{
+  \table-row{\code{--enable-worker-auditing}}{auditing for workers api requests}
+	}{
+  \table-row{\code{--enable-volume-auditing}}{auditing for volumes api requests}
+  }
 }
 
 \note{feature}{
@@ -81,7 +109,7 @@
   steps and prevent scheduling pending steps. Thanks to a PR by \ghuser{itsdalmo}.
 }
 
-\node{security}{
+\note{security}{
   Restrict SSH MAC algorithms to a secure set overriding the GO defaults which
   allow weaker algorithms.
 }

@@ -1,0 +1,7 @@
+
+{{range $idx, $row := .Rows}}
+|{{range .}} {{. | render}} |{{end -}}
+{{- if eq $idx 0}}
+|{{range .}} - |{{end -}}
+{{- end -}}
+{{- end}}
