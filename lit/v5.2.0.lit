@@ -68,6 +68,13 @@
 }
 
 \note{feature}{
+  Added a sidebar menu to the UI to let user navigate easily between pipelines,
+  regardless of where you are in the UI hierarchy.
+
+  Yes, the sidebar is resurrected!
+}
+
+\note{feature}{
   Added new \code{in_parallel} \reference{steps}{step} to be able to run steps in parallel with more
   control with additional keywords, \code{limit} which will limit the number
   of parallel steps, and \code{fail_fast} which will interrupt currently running
@@ -93,6 +100,11 @@
 \note{fix}{
   Fixed a bug with Dex cloudfoundry connector when the user is a member of many
   teams. Thanks to \ghuser{daniellavoie}.
+}
+
+\note{fix}{
+  fixed a bug where the user gets a "You are not authorized to view the details
+  of this pipeline" while watching a job.
 }
 
 \note{fix}{
