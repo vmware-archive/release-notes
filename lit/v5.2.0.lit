@@ -3,49 +3,34 @@
 \release-version{5.2.0}
 
 \note{fix,breaking}{
-  Change flag for \code{fly builds --teams} to \code{-n} from \code{-t} to make
-  it consistent across \code{fly}. Thanks to a PR by \ghuser{stigtermichiel}.
+  Changed the flag for \code{fly builds --teams} to \code{-n} from \code{-t} to
+  make it consistent across \code{fly}. Thanks to a PR by
+  \ghuser{stigtermichiel}.
 }
 
 \note{feature}{
-  As We move toward adding more RBAC roles, a new pipeline-operator role was
-  added (thanks to \ghuser{tlwr} and \ghuser{paroxp}) which is between viewer
-  and member and can:
+  As we move towards adding more RBAC roles, a new \code{pipeline-operator} role was
+  added (thanks to \ghuser{tlwr} and \ghuser{paroxp}) which has more
+  permissions than a viewer but less than a member.
+
+  The \code{pipeline-operator} role will be able to perform these actions:
 
   \list{
-  AbortBuild
+  \code{fly abort-build}
   }{
-  CreateJobBuild
+  \code{fly trigger-job}
   }{
-  PauseJob
+  \code{fly pause-job} & \code{fly unpause-job}
   }{
-  UnpauseJob
+  \code{fly check-resource}
   }{
-  ClearTaskCache
+  \code{fly check-resource-type}
   }{
-  PauseResource
+  \code{fly pause-pipeline} & \code{fly unpause-pipeline}
   }{
-  UnpauseResource
+  Enable/Disable resource versions from the web ui
   }{
-  CheckResource
-  }{
-  CheckResourceWebHook
-  }{
-  CheckResourceType
-  }{
-  EnableResourceVersion
-  }{
-  DisableResourceVersion
-  }{
-  PinResourceVersion
-  }{
-  UnpinResource
-  }{
-  SetPinCommentOnResource
-  }{
-  PausePipeline
-  }{
-  UnpausePipeline
+  Pin/Unpin resource versions from the web ui
   }
 
   A use case for that is when an entity wants a user to only be able operate a
@@ -63,27 +48,33 @@
   }{
   \table-row{\code{--enable-build-auditing}}{auditing for builds api requests}
   }{
-  \table-row{\code{--enable-container-auditing}}{auditing for containers api requests}
+  \table-row{\code{--enable-container-auditing}}{auditing for containers api
+  requests}
 	}{
   \table-row{\code{--enable-job-auditing}}{auditing for jobs api requests}
 	}{
-  \table-row{\code{--enable-pipeline-auditing}}{auditing for pipelines api requests}
+  \table-row{\code{--enable-pipeline-auditing}}{auditing for pipelines api
+  requests}
 	}{
-  \table-row{\code{--enable-resource-auditing}}{auditing for resources api requests}
+  \table-row{\code{--enable-resource-auditing}}{auditing for resources api
+  requests}
 	}{
-  \table-row{\code{--enable-system-auditing}}{auditing for system transactions api requests}
+  \table-row{\code{--enable-system-auditing}}{auditing for system transactions
+  api requests}
 	}{
   \table-row{\code{--enable-team-auditing}}{auditing for teams api requests}
 	}{
-  \table-row{\code{--enable-worker-auditing}}{auditing for workers api requests}
+  \table-row{\code{--enable-worker-auditing}}{auditing for workers api
+  requests}
 	}{
-  \table-row{\code{--enable-volume-auditing}}{auditing for volumes api requests}
+  \table-row{\code{--enable-volume-auditing}}{auditing for volumes api
+  requests}
   }
 }
 
 \note{feature}{
-  \ghuser{ralekseenkov} has done a bunch of refactors for the \reference{creds}{secret managers}
-  integration with Concourse.
+  \ghuser{ralekseenkov} has done a bunch of refactors for the
+  \reference{creds}{secret managers} integration with Concourse.
 
   Also, implemented a generic secret cache for all secret managers.
 
@@ -103,10 +94,16 @@
 }
 
 \note{feature}{
-  Added new \code{in_parallel} \reference{steps}{step} to be able to run steps in parallel with more
-  control with additional keywords, \code{limit} which will limit the number
-  of parallel steps, and \code{fail_fast} which will interrupt currently running
-  steps and prevent scheduling pending steps. Thanks to a PR by \ghuser{itsdalmo}.
+  Added a tooltip to the pause toggle on the dashboard page and the pipeline
+  page explaining why it might be disabled.
+}
+
+\note{feature}{
+  Added new \code{in_parallel} \reference{steps}{step} to be able to run steps
+  in parallel with more control with additional keywords, \code{limit} which
+  will limit the number of parallel steps, and \code{fail_fast} which will
+  interrupt currently running steps and prevent scheduling pending steps.
+  Thanks to a PR by \ghuser{itsdalmo}.
 }
 
 \note{security}{
@@ -115,13 +112,14 @@
 }
 
 \note{feature}{
-  Now Concourse is compatible with the latest \reference{credhub-credential-manager}{Credhub} 2.x (Currently not
-  supporting 2.1 due to a bug, but supporting all later versions).
-  Concourse continues to support the latest version of 1.9.x
+  Now Concourse is compatible with the latest
+  \reference{credhub-credential-manager}{Credhub} 2.x (Currently not supporting
+  2.1 due to a bug, but supporting all later versions). Concourse continues to
+  support the latest version of 1.9.x
 }
 
 \note{feature}{
-  Add ability set a name for the Concourse cluster which will be displayed on
+  Added ability set a name for the Concourse cluster which will be displayed on
   the dashboard page by setting \code{cluster-name} flag.
 }
 
@@ -131,7 +129,7 @@
 }
 
 \note{fix}{
-  fixed a bug where the user gets a "You are not authorized to view the details
+  Fixed a bug where the user gets a "You are not authorized to view the details
   of this pipeline" while watching a job.
 }
 
