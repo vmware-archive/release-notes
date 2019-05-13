@@ -4,8 +4,8 @@
 \release-date{2019-4-16}
 
 \note{fix,breaking}{
-  tl;dr: \code{concourse web --peer-url} -> \code{concourse web
-  --peer-address}
+  tl;dr: \code{concourse web --peer-url} and \code{concourse web --tsa-peer-ip}
+  are gone in favor of \code{concourse web --peer-address}
 
   We have been doing a lot of internal refactoring and decoupling between
   various components. One side effect of this is that the \reference{web-node}s
