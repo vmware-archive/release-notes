@@ -117,7 +117,7 @@
 
 \note{fix}{
   We reduced the default concurrency settings for volume sweeping from 5 to 3
-  as a way of reducing the stress that volume deletion end up putting on the
+  as a way of reducing the stress that volume deletion ends up putting on the
   system in some cases.
 }
 
@@ -159,11 +159,11 @@
 }
 
 \note{fix}{
-  \code{fly set-pipeline} with \code{--check-creds} flag no longer panics.
+  \reference{fly-set-pipeline} with \code{--check-creds} flag no longer panics.
 }
 
 \note{fix}{
-  Groups can no longer use the same name. An error is now raised if attempted.
+  Multiple groups in the same pipeline can no longer use the same name. An error is now raised if attempted.
 }
 
 \note{fix}{
