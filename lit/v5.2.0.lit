@@ -87,7 +87,7 @@
 
 \note{feature}{
   Added a tooltip to the pause toggle on the dashboard page and the pipeline
-  page explaining why it might be disabled. \reference{job-build-logs-to-retain}
+  page explaining why it might be disabled.
 }
 
 \note{feature}{
