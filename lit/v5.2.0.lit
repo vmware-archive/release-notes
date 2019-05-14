@@ -115,6 +115,11 @@
   retrieve a single team's config.
 }
 
+\note{feature}{
+  \ghuser{rkoster} added a new flag \code{--external-garden-url} to allow use of
+  non embedded garden server.
+}
+
 \note{fix}{
   We reduced the default concurrency settings for volume sweeping from 5 to 3
   as a way of reducing the stress that volume deletion ends up putting on the
