@@ -120,6 +120,11 @@
   non embedded garden server.
 }
 
+\note{feature}{
+  \ghuser{pivotal-kahin-ng} added a way of retaining the history of one job when
+  renaming it through \reference{job-old-name}.
+}
+
 \note{fix}{
   We reduced the default concurrency settings for volume sweeping from 5 to 3
   as a way of reducing the stress that volume deletion ends up putting on the
@@ -168,9 +173,15 @@
 }
 
 \note{fix}{
-  Multiple groups in the same pipeline can no longer use the same name. An error is now raised if attempted.
+  Multiple groups in the same pipeline can no longer use the same name. An error
+  is now raised if attempted.
 }
 
 \note{fix}{
   Aborted builds are now consistently displayed in the UI.
+}
+
+\note{fix}{
+  Fixed a bug where \code{fly execute --input} would hang indefinitely after
+  uploading the input directory as a consequence of the web node stopping.
 }
