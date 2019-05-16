@@ -90,6 +90,10 @@
   page explaining why it might be disabled.
 }
 
+\note{feature}{
+  \ghuser{hprotzek} added the ability to retain build logs for a specific
+  time duration and build count
+
 \note{security}{
   We have restricted the SSH MAC algorithms used by the \reference{web-node} to
   a more secure set, overriding the Go defaults which allow weaker algorithms.
@@ -104,6 +108,38 @@
 \note{feature}{
   Added ability set a name for the Concourse cluster which will be displayed on
   the dashboard page by setting \code{cluster-name} flag.
+}
+
+\note{feature}{
+  \ghuser{cappyzawa} added a new `get-team` subcommand to `fly`. It allows you to
+  retrieve a single team's config.
+}
+
+\note{feature}{
+  \ghuser{rkoster} added a new flag \code{--external-garden-url} to allow use of
+  non embedded garden server.
+}
+
+\note{feature}{
+  \ghuser{pivotal-kahin-ng} added a way of retaining the history of one job when
+  renaming it through \reference{job-old-name}.
+}
+
+\note{fix}{
+  We reduced the default concurrency settings for volume sweeping from 5 to 3
+  as a way of reducing the stress that volume deletion ends up putting on the
+  system in some cases.
+}
+
+\note{fix}{
+  \ghuser{edtan} submitted a fix when you run \code{concourse web} without a
+  \code{--session-signing-key}, it will now generate key pair to use instead.
+}
+
+\note{fix}{
+  We now return a 40x error when an expired/invalid token is used to access an
+  endpoint which support authenticated/unauthenticated views rather than an
+  empty 200 response.
 }
 
 \note{fix}{
@@ -130,4 +166,22 @@
 \note{fix}{
   \code{concourse quickstart} has been fixed to ignore the
   \code{--worker-tsa-worker-private-key} flag.
+}
+
+\note{fix}{
+  \reference{fly-set-pipeline} with \code{--check-creds} flag no longer panics.
+}
+
+\note{fix}{
+  Multiple groups in the same pipeline can no longer use the same name. An error
+  is now raised if attempted.
+}
+
+\note{fix}{
+  Aborted builds are now consistently displayed in the UI.
+}
+
+\note{fix}{
+  Fixed a bug where \code{fly execute --input} would hang indefinitely after
+  uploading the input directory as a consequence of the web node stopping.
 }
