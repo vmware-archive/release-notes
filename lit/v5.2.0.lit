@@ -19,41 +19,23 @@
   that will make it easier to look-up secrets in multiple paths.
 
   For more information, see \reference{creds}.
+
+  To follow along with future planned improvements to credential management,
+  check out \ghpr{21}{rfcs}.
 }
 
 \note{fix,breaking}{
-  Changed the short-flag for \code{fly builds --team} from \code{-t} from
-  \code{-n} to make it consistent across \code{fly}. Thanks to a PR by
-  \ghuser{stigtermichiel}.
+  \ghuser{stigtermichiel} changed the short-flag for \code{fly builds --team}
+  from \code{-t} from \code{-n} to make it consistent across \code{fly}.
+  Consistency is key.
 }
 
 \note{feature}{
-  As we move towards adding more RBAC roles, a new \code{pipeline-operator}
-  role was added (thanks to \ghuser{tlwr} and \ghuser{paroxp}) which has more
-  permissions than a viewer but less than a member.
-
-  The \code{pipeline-operator} role will be able to perform these actions:
-
-  \list{
-    \code{fly abort-build}
-  }{
-    \code{fly trigger-job}
-  }{
-    \code{fly pause-job} & \code{fly unpause-job}
-  }{
-    \code{fly check-resource}
-  }{
-    \code{fly check-resource-type}
-  }{
-    \code{fly pause-pipeline} & \code{fly unpause-pipeline}
-  }{
-    Enable/Disable resource versions from the web ui
-  }{
-    Pin/Unpin resource versions from the web ui
-  }
-
-  A use case for that is when an entity wants a user to only be able operate a
-  pipeline without being able to change the pipeline configuration.
+  A new \reference{team-pipeline-operator-role} has been added (thanks to
+  \ghuser{tlwr} and \ghuser{paroxp}) which has more permissions than a
+  \reference{team-viewer-role}{\code{viewer}} but less than a
+  \reference{team-member-role}{\code{member}}. For an exhaustive comparison of
+  capabilities, see the \reference{permission-matrix}.
 }
 
 \note{feature}{
@@ -80,9 +62,8 @@
   will interrupt currently running steps and prevent scheduling pending steps.
 
   This sounds a lot like the \reference{aggregate-step}, only better in every
-  way (especially that it doesn't have a stupid name), so
-  \reference{fly-set-pipeline} will now issue deprecation warnings for
-  \code{aggregate:} usage.
+  way (e.g. it doesn't have a stupid name), so \reference{fly-set-pipeline}
+  will now issue deprecation warnings for \code{aggregate:} usage.
 }
 
 \note{feature}{
@@ -91,8 +72,10 @@
 }
 
 \note{feature}{
-  \ghuser{hprotzek} added the ability to retain build logs for a specific
-  time duration and build count
+  \ghuser{hprotzek} added the ability to retain build logs for a specific time
+  duration and/or build count. See \reference{job-build-log-retention} for more
+  details.
+}
 
 \note{security}{
   We have restricted the SSH MAC algorithms used by the \reference{web-node} to
@@ -116,13 +99,15 @@
 }
 
 \note{feature}{
-  \ghuser{rkoster} added a new flag \code{--external-garden-url} to allow use of
-  non embedded garden server.
+  \ghuser{rkoster} added a new flag \code{--external-garden-url} to allow use
+  of a separately-managed Garden server as a worker.
 }
 
 \note{feature}{
-  \ghuser{pivotal-kahin-ng} added a way of retaining the history of one job when
-  renaming it through \reference{job-old-name}.
+  \ghuser{pivotal-kahin-ng} added a way of retaining the build history of a job
+  when renaming it, by updating the job name and specifying its old name as
+  \reference{job-old-name}. After the pipeline has been configured, the
+  \code{old_name} field can be removed.
 }
 
 \note{fix}{
@@ -132,14 +117,18 @@
 }
 
 \note{fix}{
-  \ghuser{edtan} submitted a fix when you run \code{concourse web} without a
-  \code{--session-signing-key}, it will now generate key pair to use instead.
+  \ghuser{edtan} fixed a panic caused by running \code{concourse web} without a
+  \code{--session-signing-key}.
 }
 
 \note{fix}{
-  We now return a 40x error when an expired/invalid token is used to access an
-  endpoint which support authenticated/unauthenticated views rather than an
-  empty 200 response.
+  The Concourse API now returns \code{401 Unauthorized} when an expired/invalid
+  token is used to access an endpoint which supports
+  authenticated/unauthenticated views.
+
+  Previously it would just return a 200 response with less data, as if you
+  weren't logged in, which made the behavior somewhat ambiguous and made
+  auto-relogin logic difficult to implement consistently.
 }
 
 \note{fix}{
@@ -156,6 +145,9 @@
   Fixed a bug where aborting a started build prior to a \reference{web-node}
   re-attaching to it would result in an orphaned, still running, uncompleted
   build.
+
+  Along the way, the general 'aborting' flow has been refactored and should fix
+  up any oddities caused by aborting builds at...inopportune moments.
 }
 
 \note{fix}{
@@ -175,10 +167,6 @@
 \note{fix}{
   Multiple groups in the same pipeline can no longer use the same name. An error
   is now raised if attempted.
-}
-
-\note{fix}{
-  Aborted builds are now consistently displayed in the UI.
 }
 
 \note{fix}{
