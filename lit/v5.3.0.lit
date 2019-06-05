@@ -1,0 +1,12 @@
+\use-plugin{concourse-docs}
+
+\release-version{5.3.0}
+
+\note{feature}{
+  \ghuser{rliebz} added the ability for \code{put} steps to
+  \link{\code{git}}{https://github.com/concourse/git-resource} resources with the
+  parameter \code{merge: true} to be further configured with the parameter
+  \code{returning: unmerged}, which will ensure that concurrent changes to the
+  same remote branch do not affect downstream jobs
+  \bold{\link{#262}{https://github.com/concourse/git-resource/pull/262}}.
+}
