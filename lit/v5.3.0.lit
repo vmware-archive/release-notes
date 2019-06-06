@@ -37,3 +37,8 @@
 
   Thanks to \ghuser{bodymindarts} for contributing to this effort.
 }
+
+\note{fix}{
+  Addressed a bug where in rare circumstances, \code{fly intercept -c} would
+  find multiple check containers for the same resource \ghpr{3983}.
+}
