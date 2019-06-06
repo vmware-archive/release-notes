@@ -42,3 +42,13 @@
   Addressed a bug where in rare circumstances, \code{fly intercept -c} would
   find multiple check containers for the same resource \ghpr{3983}.
 }
+
+\note{fix}{
+  In service of a
+  \link{refactor}{https://github.com/concourse/concourse/issues/3811},
+  \link{task caches}{https://concourse-ci.org/tasks.html#caches}
+  are now decoupled from the worker(s) they are stored on. As a result, you may
+  find that in multi-worker deployments, pipelines making use of task caches
+  may consume duplicate storage across workers
+  \ghpr{3830}, \ghpr{3965}.
+}
