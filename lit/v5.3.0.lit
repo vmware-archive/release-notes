@@ -4,20 +4,10 @@
 
 \note{feature}{
   \ghuser{rliebz} added the ability for \code{put} steps to
-  \link{\code{git}}{https://github.com/concourse/git-resource} resources with the
-  parameter \code{merge: true} to be further configured with the parameter
-  \code{returning: unmerged}, which will ensure that concurrent changes to the
-  same remote branch do not affect downstream jobs
-  \bold{\link{#262}{https://github.com/concourse/git-resource/pull/262}}.
-}
-
-\note{fix}{
-  \ghuser{palixthepalalix} fixed a
-  \link{bug}{https://github.com/concourse/concourse/issues/3794} in the
-  \link{\code{git}}{https://github.com/concourse/git-resource} where commits
-  from extraneous branches could appear in the version history if a tag filter
-  was specified
-  \bold{\link{#261}{https://github.com/concourse/git-resource/pull/261}}.
+  \resource{git}s with the parameter \code{merge: true} to be further configured
+  with the parameter \code{returning: unmerged}, which will ensure that
+  concurrent changes to the same remote branch do not affect downstream jobs
+  \ghpr{262}{git-resource}.
 }
 
 \note{feature}{
@@ -27,4 +17,23 @@
   \link{BOSH release}{https://github.com/concourse/concourse-bosh-release} to be
   configured via a \link{BOSH link}{https://bosh.io/docs/links/}
   \ghpr{29}{concourse-bosh-release}, \ghpr{35}{concourse-bosh-release}.
+}
+
+\note{fix}{
+  \ghuser{palixthepalalix} fixed a
+  \link{bug}{https://github.com/concourse/concourse/issues/3794} in the
+  \resource{git} where commits
+  from extraneous branches could appear in the version history if a tag filter
+  was specified \ghpr{261}{git-resource}.
+}
+
+\note{fix}{
+  Made the Concourse worker process systemd-aware. This
+  fixed a subtle \link{bug}{https://github.com/concourse/concourse/issues/3613}
+  introduced in \ghrelease{v5.0.0} that could, on rare occasions, cause
+  \link{container limits}{https://concourse-ci.org/tasks.html#task-container-limits}
+  not to be enforced or prevent containers from being killed
+  \ghpr{24}{concourse-bosh-release}, \ghpr{31}{concourse-bosh-release}.
+
+  Thanks to \ghuser{bodymindarts} for contributing to this effort.
 }
