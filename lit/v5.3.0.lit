@@ -20,11 +20,11 @@
   \bold{\link{#261}{https://github.com/concourse/git-resource/pull/261}}.
 }
 
-\note{fix}{
-  Fixed a
-  \link{bug}{https://github.com/concourse/concourse-bosh-release/issues/34} in the
-  \link{BOSH release}{https://github.com/concourse/concourse-bosh-release} where
-  the \link{BOSH Backup and Restore}{https://docs.cloudfoundry.org/bbr/} job for
-  the database would fail because of a typo in the parameter names it was
-  configured to look for.
+\note{feature}{
+  Added the option for the
+  \link{BOSH Backup and Restore}{https://docs.cloudfoundry.org/bbr/} database
+  backup job in the
+  \link{BOSH release}{https://github.com/concourse/concourse-bosh-release} to be
+  configured via a \link{BOSH link}{https://bosh.io/docs/links/}
+  \ghpr{29}{concourse-bosh-release}, \ghpr{35}{concourse-bosh-release}.
 }
