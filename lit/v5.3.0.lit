@@ -10,3 +10,12 @@
   same remote branch do not affect downstream jobs
   \bold{\link{#262}{https://github.com/concourse/git-resource/pull/262}}.
 }
+
+\note{fix}{
+  \ghuser{palixthepalalix} fixed a
+  \link{bug}{https://github.com/concourse/concourse/issues/3794} in the
+  \link{\code{git}}{https://github.com/concourse/git-resource} where commits
+  from extraneous branches could appear in the version history if a tag filter
+  was specified
+  \bold{\link{#261}{https://github.com/concourse/git-resource/pull/261}}.
+}
