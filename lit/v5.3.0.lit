@@ -52,3 +52,10 @@
   may consume duplicate storage across workers
   \ghpr{3830}, \ghpr{3965}.
 }
+
+\note{fix}{
+  Corrected a
+  \link{surprising behaviour}{https://github.com/concourse/concourse/issues/3957}
+  where, when a pipeline was paused for an extended period of time, many of its
+  resources' versions would disappear \ghpr{3963}.
+}
