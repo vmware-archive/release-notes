@@ -74,3 +74,14 @@
   \link{performance regression}{https://github.com/concourse/concourse/issues/3748},
   which is now also fixed \ghpr{3870}, \ghpr{3901}.
 }
+
+\note{feature}{
+  If you want your web node to accept encrypted connections over HTTPS, you now
+  have the option of connecting to an
+  \link{ACME server}{https://en.wikipedia.org/wiki/Automated_Certificate_Management_Environment}
+  to automatically retrieve a certificate from an ACME server of your choice. By
+  default it will reach the free public ACME service provided by
+  \link{Let's Encrypt}{https://letsencrypt.org/}.
+
+  Thanks to \ghuser{henderjm} for the PR \ghpr{3878}!
+}
