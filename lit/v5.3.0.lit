@@ -59,3 +59,9 @@
   where, when a pipeline was paused for an extended period of time, many of its
   resources' versions would disappear \ghpr{3963}.
 }
+
+\note{feature}{
+  \ghuser{stigtermichiel} tuned our build process so that the size of the
+  compressed frontend code is reduced by a factor of 3 - page loads should be
+  accordingly faster \ghpr{3915}.
+}
