@@ -65,3 +65,12 @@
   compressed frontend code is reduced by a factor of 3 - page loads should be
   accordingly faster \ghpr{3915}.
 }
+
+\note{fix}{
+  There was a long-standing
+  \link{bug}{https://github.com/concourse/concourse/issues/1710} on the
+  dashboard, where the existence of circular pipelines would cause the browser
+  to crash. This was fixed in \ghrelease{v5.2.0}, but the fix caused a
+  \link{performance regression}{https://github.com/concourse/concourse/issues/3748},
+  which is now also fixed \ghpr{3870}, \ghpr{3901}.
+}
