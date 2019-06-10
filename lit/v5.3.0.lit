@@ -145,3 +145,8 @@
   ignored by most browsers, but helps Concourse pass some automated security
   scans \ghpr{3839}.
 }
+
+\note{feature}{
+  \ghuser{tvon} gave the highlighted lines on the build page a slightly darker
+  color so they really pop \ghpr{3866}.
+}
