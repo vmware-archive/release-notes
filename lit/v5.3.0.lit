@@ -101,3 +101,12 @@
   retiring team-scoped workers with the \code{concourse retire-worker} command
   \ghpr{3929}.
 }
+
+\note{fix}{
+  A \link{bug}{https://github.com/concourse/concourse/issues/3930}
+  on the reaped build logs screen was fixed, where a link was pointing to
+  deprecated documentation \ghpr{3931}.
+
+  This screen is visible when you visit a build log that exceeded its configured
+  \link{retention policy}{https://concourse-ci.org/jobs.html#job-build-log-retention}.
+}
