@@ -139,3 +139,9 @@
   When you pin a resource through the web UI, your name and current local time
   will now be automatically added as the pin comment \ghpr{3743}.
 }
+
+\note{feature}{
+  The 'password' field on the login page now has an HTML property that will be
+  ignored by most browsers, but helps Concourse pass some automated security
+  scans \ghpr{3839}.
+}
