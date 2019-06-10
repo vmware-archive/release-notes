@@ -93,3 +93,11 @@
   specified, only one attempt would be possible to view on the build page
   \ghpr{3898}.
 }
+
+\note{fix}{
+  \ghuser{gaelL} Fixed a
+  \link{bug}{https://github.com/concourse/concourse/issues/3549}, which had
+  existed since at least \ghrelease{v4.2.3}, where operators were prevented from
+  retiring team-scoped workers with the \code{concourse retire-worker} command
+  \ghpr{3929}.
+}
