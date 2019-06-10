@@ -107,6 +107,14 @@
   on the reaped build logs screen was fixed, where a link was pointing to
   deprecated documentation \ghpr{3931}.
 
-  This screen is visible when you visit a build log that exceeded its configured
+  This screen is visible when you visit a build that is older than its job's
+  configured
   \link{retention policy}{https://concourse-ci.org/jobs.html#job-build-log-retention}.
+}
+
+\note{feature}{
+  \ghuser{agurney} improved the info api endpoint (\code{/api/v1/info}) to
+  return both the external URL and cluster name \ghpr{3862}.
+
+  Hopefully this will enable future improvements to \code{fly} and the web UI!
 }
