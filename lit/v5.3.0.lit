@@ -118,3 +118,11 @@
 
   Hopefully this will enable future improvements to \code{fly} and the web UI!
 }
+
+\note{fix}{
+  Fixed a problem with one of the database migrations introduced in
+  \ghrelease{v5.0.0} which could cause the web node startup to fail in some
+  cases. This won't affect users who have kept up to date until now, but if this
+  is the first version of Concourse you are deploying since before
+  \ghrelease{v5.0.0}, the upgrade should be a little more resilient \ghpr{3996}.
+}
