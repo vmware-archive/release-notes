@@ -126,3 +126,11 @@
   is the first version of Concourse you are deploying since before
   \ghrelease{v5.0.0}, the upgrade should be a little more resilient \ghpr{3996}.
 }
+
+\note{feature}{
+  \ghuser{jmccann} enabled Concourse to authenticate with
+  \link{Vault as a credential manager}{https://concourse-ci.org/vault-credential-manager.html}
+  via an LDAP backend by setting
+  \code{CONCOURSE_VAULT_AUTH_PARAM="username:<your ldap username>,password:<your ldap password>"}
+  \ghpr{3884}.
+}
