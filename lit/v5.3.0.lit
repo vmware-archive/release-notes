@@ -85,3 +85,11 @@
 
   Thanks to \ghuser{henderjm} for the PR \ghpr{3878}!
 }
+
+\note{fix}{
+  Fixed a \link{bug}{https://github.com/concourse/concourse/issues/3814},
+  introduced in \ghrelease{v5.1.0}, where, on a build step with
+  \link{\code{attempts:}}{https://concourse-ci.org/attempts-step-modifier.html}
+  specified, only one attempt would be possible to view on the build page
+  \ghpr{3898}.
+}
