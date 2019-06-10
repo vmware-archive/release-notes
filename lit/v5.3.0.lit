@@ -134,3 +134,8 @@
   \code{CONCOURSE_VAULT_AUTH_PARAM="username:<your ldap username>,password:<your ldap password>"}
   \ghpr{3884}.
 }
+
+\note{feature}{
+  When you pin a resource through the web UI, your name and current local time
+  will now be automatically added as the pin comment \ghpr{3743}.
+}
