@@ -150,3 +150,9 @@
   \ghuser{tvon} gave the highlighted lines on the build page a slightly darker
   color so they really pop \ghpr{3866}.
 }
+
+\note{fix}{
+  \ghuser{mockersf} fixed a problem where timestamps weren't being properly
+  returned when a get step or a put step finished. This caused some wacky
+  durations to be displayed on build pages \ghpr{3871}.
+}
