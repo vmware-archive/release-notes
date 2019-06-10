@@ -19,6 +19,54 @@
   \ghpr{29}{concourse-bosh-release}, \ghpr{35}{concourse-bosh-release}.
 }
 
+\note{feature}{
+  \ghuser{stigtermichiel} tuned our build process so that the size of the
+  compressed frontend code is reduced by a factor of 3 - page loads should be
+  accordingly faster \ghpr{3915}.
+}
+
+\note{feature}{
+  If you want your web node to accept encrypted connections over HTTPS, you now
+  have the option of connecting to an
+  \link{ACME server}{https://en.wikipedia.org/wiki/Automated_Certificate_Management_Environment}
+  to automatically retrieve a certificate from an ACME server of your choice. By
+  default it will reach the free public ACME service provided by
+  \link{Let's Encrypt}{https://letsencrypt.org/}.
+
+  Thanks to \ghuser{henderjm} for the PR \ghpr{3878}!
+}
+
+\note{feature}{
+  \ghuser{agurney} improved the info api endpoint (\code{/api/v1/info}) to
+  return both the external URL and cluster name \ghpr{3862}.
+
+  Hopefully this will enable future improvements to \code{fly} and the web UI!
+}
+
+\note{feature}{
+  \ghuser{jmccann} enabled Concourse to authenticate with
+  \link{Vault as a credential manager}{https://concourse-ci.org/vault-credential-manager.html}
+  via an LDAP backend by setting
+  \code{CONCOURSE_VAULT_AUTH_PARAM="username:<your ldap username>,password:<your ldap password>"}
+  \ghpr{3884}.
+}
+
+\note{feature}{
+  When you pin a resource through the web UI, your name and current local time
+  will now be automatically added as the pin comment \ghpr{3743}.
+}
+
+\note{feature}{
+  The 'password' field on the login page now has an HTML property that will be
+  ignored by most browsers, but helps Concourse pass some automated security
+  scans \ghpr{3839}.
+}
+
+\note{feature}{
+  \ghuser{tvon} gave the highlighted lines on the build page a slightly darker
+  color so they really pop \ghpr{3866}.
+}
+
 \note{fix}{
   \ghuser{palixthepalalix} fixed a
   \link{bug}{https://github.com/concourse/concourse/issues/3794} in the
@@ -60,12 +108,6 @@
   resources' versions would disappear \ghpr{3963}.
 }
 
-\note{feature}{
-  \ghuser{stigtermichiel} tuned our build process so that the size of the
-  compressed frontend code is reduced by a factor of 3 - page loads should be
-  accordingly faster \ghpr{3915}.
-}
-
 \note{fix}{
   There was a long-standing
   \link{bug}{https://github.com/concourse/concourse/issues/1710} on the
@@ -73,17 +115,6 @@
   to crash. This was fixed in \ghrelease{v5.2.0}, but the fix caused a
   \link{performance regression}{https://github.com/concourse/concourse/issues/3748},
   which is now also fixed \ghpr{3870}, \ghpr{3901}.
-}
-
-\note{feature}{
-  If you want your web node to accept encrypted connections over HTTPS, you now
-  have the option of connecting to an
-  \link{ACME server}{https://en.wikipedia.org/wiki/Automated_Certificate_Management_Environment}
-  to automatically retrieve a certificate from an ACME server of your choice. By
-  default it will reach the free public ACME service provided by
-  \link{Let's Encrypt}{https://letsencrypt.org/}.
-
-  Thanks to \ghuser{henderjm} for the PR \ghpr{3878}!
 }
 
 \note{fix}{
@@ -112,13 +143,6 @@
   \link{retention policy}{https://concourse-ci.org/jobs.html#job-build-log-retention}.
 }
 
-\note{feature}{
-  \ghuser{agurney} improved the info api endpoint (\code{/api/v1/info}) to
-  return both the external URL and cluster name \ghpr{3862}.
-
-  Hopefully this will enable future improvements to \code{fly} and the web UI!
-}
-
 \note{fix}{
   Fixed a problem with one of the database migrations introduced in
   \ghrelease{v5.0.0} which could cause the web node startup to fail in some
@@ -127,32 +151,14 @@
   \ghrelease{v5.0.0}, the upgrade should be a little more resilient \ghpr{3996}.
 }
 
-\note{feature}{
-  \ghuser{jmccann} enabled Concourse to authenticate with
-  \link{Vault as a credential manager}{https://concourse-ci.org/vault-credential-manager.html}
-  via an LDAP backend by setting
-  \code{CONCOURSE_VAULT_AUTH_PARAM="username:<your ldap username>,password:<your ldap password>"}
-  \ghpr{3884}.
-}
-
-\note{feature}{
-  When you pin a resource through the web UI, your name and current local time
-  will now be automatically added as the pin comment \ghpr{3743}.
-}
-
-\note{feature}{
-  The 'password' field on the login page now has an HTML property that will be
-  ignored by most browsers, but helps Concourse pass some automated security
-  scans \ghpr{3839}.
-}
-
-\note{feature}{
-  \ghuser{tvon} gave the highlighted lines on the build page a slightly darker
-  color so they really pop \ghpr{3866}.
-}
-
 \note{fix}{
   \ghuser{mockersf} fixed a problem where timestamps weren't being properly
   returned when a get step or a put step finished. This caused some wacky
   durations to be displayed on build pages \ghpr{3871}.
+}
+
+\note{fix}{
+  Fixed an issue with our build process that caused \code{fly} to
+  \link{stop working}{https://github.com/concourse/concourse/issues/3691}
+  for some folks making use of a VPN with split DNS.
 }
