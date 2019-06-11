@@ -162,3 +162,9 @@
   \link{stop working}{https://github.com/concourse/concourse/issues/3691}
   for some folks making use of a VPN with split DNS.
 }
+
+\note{fix}{
+  Fixed a \link{bug}{https://github.com/concourse/concourse/issues/2323} where
+  the dashboard preview of a paused job with a pending build would show the
+  color of the most recent build's status, when it should be blue \ghpr{3718}.
+}
