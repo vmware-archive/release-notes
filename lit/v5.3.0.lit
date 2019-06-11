@@ -1,0 +1,170 @@
+\use-plugin{concourse-docs}
+
+\release-version{5.3.0}
+
+\note{feature}{
+  \ghuser{rliebz} added the ability for \code{put} steps to
+  \resource{git}s with the parameter \code{merge: true} to be further configured
+  with the parameter \code{returning: unmerged}, which will ensure that
+  concurrent changes to the same remote branch do not affect downstream jobs
+  \ghpr{262}{git-resource}.
+}
+
+\note{feature}{
+  Added the option for the
+  \link{BOSH Backup and Restore}{https://docs.cloudfoundry.org/bbr/} database
+  backup job in the
+  \link{BOSH release}{https://github.com/concourse/concourse-bosh-release} to be
+  configured via a \link{BOSH link}{https://bosh.io/docs/links/}
+  \ghpr{29}{concourse-bosh-release}, \ghpr{35}{concourse-bosh-release}.
+}
+
+\note{feature}{
+  \ghuser{stigtermichiel} tuned our build process so that the size of the
+  compressed frontend code is reduced by a factor of 3 - page loads should be
+  accordingly faster \ghpr{3915}.
+}
+
+\note{feature}{
+  If you want your web node to accept encrypted connections over HTTPS, you now
+  have the option of connecting to an
+  \link{ACME server}{https://en.wikipedia.org/wiki/Automated_Certificate_Management_Environment}
+  to automatically retrieve a certificate from an ACME server of your choice. By
+  default it will reach the free public ACME service provided by
+  \link{Let's Encrypt}{https://letsencrypt.org/}.
+
+  Thanks to \ghuser{henderjm} for the PR \ghpr{3878}!
+}
+
+\note{feature}{
+  \ghuser{agurney} improved the info api endpoint (\code{/api/v1/info}) to
+  return both the external URL and cluster name \ghpr{3862}.
+
+  Hopefully this will enable future improvements to \code{fly} and the web UI!
+}
+
+\note{feature}{
+  \ghuser{jmccann} enabled Concourse to authenticate with
+  \link{Vault as a credential manager}{https://concourse-ci.org/vault-credential-manager.html}
+  via an LDAP backend by setting
+  \code{CONCOURSE_VAULT_AUTH_PARAM="username:<your ldap username>,password:<your ldap password>"}
+  \ghpr{3884}.
+}
+
+\note{feature}{
+  When you pin a resource through the web UI, your name and current local time
+  will now be automatically added as the pin comment \ghpr{3743}.
+}
+
+\note{feature}{
+  The 'password' field on the login page now has an HTML property that will be
+  ignored by most browsers, but helps Concourse pass some automated security
+  scans \ghpr{3839}.
+}
+
+\note{feature}{
+  \ghuser{tvon} gave the highlighted lines on the build page a slightly darker
+  color so they really pop \ghpr{3866}.
+}
+
+\note{fix}{
+  \ghuser{palixthepalalix} fixed a
+  \link{bug}{https://github.com/concourse/concourse/issues/3794} in the
+  \resource{git} where commits
+  from extraneous branches could appear in the version history if a tag filter
+  was specified \ghpr{261}{git-resource}.
+}
+
+\note{fix}{
+  Made the Concourse worker process systemd-aware. This
+  fixed a subtle \link{bug}{https://github.com/concourse/concourse/issues/3613}
+  introduced in \ghrelease{v5.0.0} that could, on rare occasions, cause
+  \link{container limits}{https://concourse-ci.org/tasks.html#task-container-limits}
+  not to be enforced or prevent containers from being killed
+  \ghpr{24}{concourse-bosh-release}, \ghpr{31}{concourse-bosh-release}.
+
+  Thanks to \ghuser{bodymindarts} for contributing to this effort.
+}
+
+\note{fix}{
+  Addressed a bug where in rare circumstances, \code{fly intercept -c} would
+  find multiple check containers for the same resource \ghpr{3983}.
+}
+
+\note{fix}{
+  In service of a
+  \link{refactor}{https://github.com/concourse/concourse/issues/3811},
+  \link{task caches}{https://concourse-ci.org/tasks.html#caches}
+  are now decoupled from the worker(s) they are stored on. As a result, you may
+  find that in multi-worker deployments, pipelines making use of task caches
+  may consume duplicate storage across workers
+  \ghpr{3830}, \ghpr{3965}.
+}
+
+\note{fix}{
+  Corrected a
+  \link{surprising behaviour}{https://github.com/concourse/concourse/issues/3957}
+  where, when a pipeline was paused for an extended period of time, many of its
+  resources' versions would disappear \ghpr{3963}.
+}
+
+\note{fix}{
+  There was a long-standing
+  \link{bug}{https://github.com/concourse/concourse/issues/1710} on the
+  dashboard, where the existence of circular pipelines would cause the browser
+  to crash. This was fixed in \ghrelease{v5.2.0}, but the fix caused a
+  \link{performance regression}{https://github.com/concourse/concourse/issues/3748},
+  which is now also fixed \ghpr{3870}, \ghpr{3901}.
+}
+
+\note{fix}{
+  Fixed a \link{bug}{https://github.com/concourse/concourse/issues/3814},
+  introduced in \ghrelease{v5.1.0}, where, on a build step with
+  \link{\code{attempts:}}{https://concourse-ci.org/attempts-step-modifier.html}
+  specified, only one attempt would be possible to view on the build page
+  \ghpr{3898}.
+}
+
+\note{fix}{
+  \ghuser{gaelL} Fixed a
+  \link{bug}{https://github.com/concourse/concourse/issues/3549}, which had
+  existed since at least \ghrelease{v4.2.3}, where operators were prevented from
+  retiring team-scoped workers with the \code{concourse retire-worker} command
+  \ghpr{3929}.
+}
+
+\note{fix}{
+  A \link{bug}{https://github.com/concourse/concourse/issues/3930}
+  on the reaped build logs screen was fixed, where a link was pointing to
+  deprecated documentation \ghpr{3931}.
+
+  This screen is visible when you visit a build that is older than its job's
+  configured
+  \link{retention policy}{https://concourse-ci.org/jobs.html#job-build-log-retention}.
+}
+
+\note{fix}{
+  Fixed a problem with one of the database migrations introduced in
+  \ghrelease{v5.0.0} which could cause the web node startup to fail in some
+  cases. This won't affect users who have kept up to date until now, but if this
+  is the first version of Concourse you are deploying since before
+  \ghrelease{v5.0.0}, the upgrade should be a little more resilient \ghpr{3996}.
+}
+
+\note{fix}{
+  \ghuser{mockersf} fixed a problem where timestamps weren't being properly
+  returned when a get step or a put step finished. This caused some wacky
+  durations to be displayed on build pages \ghpr{3871}.
+}
+
+\note{fix}{
+  Fixed an issue with our build process that caused \code{fly} to
+  \link{stop working}{https://github.com/concourse/concourse/issues/3691}
+  for some folks making use of a VPN with split DNS.
+}
+
+\note{fix}{
+  Fixed a \link{bug}{https://github.com/concourse/concourse/issues/2323} where
+  the dashboard preview of a paused job with a pending build would show the
+  color of the most recent build's status, when it should be blue \ghpr{3718}.
+}
