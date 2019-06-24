@@ -1,0 +1,10 @@
+\use-plugin{concourse-docs}
+
+\release-version{} // TODO: what is the next version?
+
+\note{fix}{
+  Fixed a regression found recently involving 
+  \link{momentum based scrolling}{https://github.com/concourse/concourse/issues/3956}
+  on build pages on iOS browsers. 
+  The fix was also applied to the sidebar and the dashboard \ghpr{4050}
+}
