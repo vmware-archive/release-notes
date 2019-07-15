@@ -2,6 +2,18 @@
 
 \release-version{5.4.0}
 
+\note{feature,breaking}{
+  We have switched to a more efficient algorithm for streaming volumes between
+  various components of the system - the \code{web} and \code{worker} nodes now
+  transmit volumes compressed with the
+  \link{Zstandard}{https://facebook.github.io/zstd/} algorithm rather than
+  \link{\code{Gzip}}{https://en.wikipedia.org/wiki/Gzip} - \code{fly} is
+  affected, too (when uploading/downloading artifacts during
+  \code{fly execute}). We're hoping this will resolve some general complaints
+  of steps being slow to start or appearing to "hang" in clustered environments.
+  \bold{note:} this will require upgrading your workers \ghpr{3880}.
+}
+
 \note{fix}{
   Fixed a regression found recently involvin 
   \link{momentum based scrolling}{https://github.com/concourse/concourse/issues/3956}
