@@ -8,3 +8,9 @@
   on build pages on iOS browsers 
   The fix was also applied to the sidebar and the dashboard \ghpr{4050}
 }
+
+\note{feature}{
+  \ghuser{maryamklabib} optimized the \resource{pool} - \code{check} and
+  \code{in} scripts will run faster by using shallow cloning
+  \pr{49}{pool-resource}.
+}
