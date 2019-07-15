@@ -14,8 +14,14 @@
   \bold{note:} this will require upgrading your workers \ghpr{3880}.
 }
 
+\note{feature,breaking}{
+  On the build page all steps are now collapsed by default. This means that the
+  build page loads faster, but if you want to watch the logs in real time, you
+  will need to click on the header of the running step \ghpr{4058}.
+}
+
 \note{fix}{
-  Fixed a regression found recently involvin 
+  Fixed a regression found recently involving
   \link{momentum based scrolling}{https://github.com/concourse/concourse/issues/3956}
   on build pages on iOS browsers 
   The fix was also applied to the sidebar and the dashboard \ghpr{4050}
