@@ -41,3 +41,9 @@
   \link{\code{platform}}{https://concourse-ci.org/tasks.html#task-platform}
   of the task being executed \ghpr{4066}.
 }
+
+\note{fix}{
+  \ghuser{cappyzawa} fixed up \code{fly} to behave like a sensible Unix tool
+  when passing the \code{-h} or \code{--help} flag: it now prints the usage text
+  on \code{stdout} and returns a successful status code \ghpr{4064}.
+}
