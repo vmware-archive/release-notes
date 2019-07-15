@@ -14,3 +14,11 @@
   \code{in} scripts will run faster by using shallow cloning
   \pr{49}{pool-resource}.
 }
+
+\note{fix}{
+  \ghuser{cappyzawa} fixed an issue where the \resource{s3} would break when
+  \link{\code{disable_multipart: true}}{https://github.com/concourse/s3-resource#source-configuration}
+  was set in the source configuration, and a tracked file was smaller than the
+  minimum upload part size for the configured s3-compatible blobstore
+  \ghpr{131}{s3-resource}.
+}
