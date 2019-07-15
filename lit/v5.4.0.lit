@@ -22,3 +22,11 @@
   minimum upload part size for the configured s3-compatible blobstore
   \ghpr{131}{s3-resource}.
 }
+
+\note{feature}{
+  Improved the appearance of the sidebar (re-introduced in \ghrelease{v5.2.0})
+  in response to
+  \link{user feedback}{https://github.com/concourse/concourse/issues/3872}.
+  Teams and pipelines are now easier to distinguish, and there are nicely styled
+  tooltips for long items \ghpr{4032}.
+}
