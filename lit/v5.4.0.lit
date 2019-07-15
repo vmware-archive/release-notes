@@ -47,3 +47,10 @@
   when passing the \code{-h} or \code{--help} flag: it now prints the usage text
   on \code{stdout} and returns a successful status code \ghpr{4064}.
 }
+
+\note{fix}{
+  \ghuser{robwhitby} fixed an
+  \link{issue}{https://github.com/concourse/concourse/issues/4005} where
+  re-checking a resource would cause the metadata from its latest version to be
+  erased \ghpr{4028}.
+}
