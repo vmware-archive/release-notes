@@ -30,3 +30,14 @@
   Teams and pipelines are now easier to distinguish, and there are nicely styled
   tooltips for long items \ghpr{4032}.
 }
+
+\note{fix}{
+  Fixed a \link{bug}{https://github.com/concourse/concourse/issues/3803} where,
+  if your local machine is running Mac or Linux and you run \code{fly execute}
+  with \code{--input} against a cluster with a mix of Linux and Windows workers,
+  your files could get uploaded to a Windows worker, where ther permission
+  metadata would be stripped off. Now \code{fly execute} makes sure
+  only to upload user artifacts to workers matching the
+  \link{\code{platform}}{https://concourse-ci.org/tasks.html#task-platform}
+  of the task being executed \ghpr{4066}.
+}
