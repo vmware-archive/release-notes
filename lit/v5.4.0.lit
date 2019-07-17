@@ -97,3 +97,10 @@
   re-checking a resource would cause the metadata from its latest version to be
   erased \ghpr{4028}.
 }
+
+\note{feature}{
+  \ghuser{deadNightTiger} added a
+  \link{\code{fly completion}}{https://concourse-ci.org/fly.html#fly-completion}
+  subcommand that allows \code{fly} to output autocompletion for the \code{bash}
+  and \code{zsh} shells \ghpr{4012}.
+}
