@@ -112,3 +112,9 @@
   As the checks resolve, the spinners will become checkmarks, so you'll have a
   better sense of what might be holding up your build \ghpr{3970}.
 }
+
+\note{feature}{
+  When you abort a pending build before it gets scheduled, the build page will
+  now report it as 'cancelled' instead of showing a loading spinner forever
+  \ghpr{3922}.
+}
