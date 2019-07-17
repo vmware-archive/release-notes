@@ -118,3 +118,9 @@
   now report it as 'cancelled' instead of showing a loading spinner forever
   \ghpr{3922}.
 }
+
+\note{feature}{
+  the CSS optimizer used in building the web UI was upgraded, so the resulting
+  CSS is slightly smaller, which should result in some faster page loads
+  \ghpr{4004}.
+}
