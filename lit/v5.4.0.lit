@@ -31,24 +31,45 @@
   will need to click on the header of the running step \ghpr{4058}.
 }
 
-\note{fix}{
-  The BOSH Backup and Restore job for the database now works properly if you
-  provide your database configuration via a BOSH link. Before, it would always
-  use a hardcoded default if you didn't explicitly specify, causing BOSH links
-  to be ignored \ghpr{41}{concourse-bosh-release}.
-}
-
-\note{fix}{
-  Fixed a regression found recently involving
-  \link{momentum based scrolling}{https://github.com/concourse/concourse/issues/3956}
-  on build pages on iOS browsers 
-  The fix was also applied to the sidebar and the dashboard \ghpr{4050}
+\note{feature}{
+  Improved the appearance of the sidebar (re-introduced in \ghrelease{v5.2.0})
+  in response to
+  \link{user feedback}{https://github.com/concourse/concourse/issues/3872}.
+  Teams and pipelines are now easier to distinguish, and there are nicely styled
+  tooltips for long items \ghpr{4032}.
 }
 
 \note{feature}{
   \ghuser{maryamklabib} optimized the \resource{pool} - \code{check} and
   \code{in} scripts will run faster by using shallow cloning
   \pr{49}{pool-resource}.
+}
+
+\note{feature}{
+  When you manually trigger a build through the web UI, the 'prep' section at
+  the top of the build page now shows a spinner on the entries marked
+  "discovering new versions of..." while the resource checks are in progress.
+  As the checks resolve, the spinners will become checkmarks, so you'll have a
+  better sense of what might be holding up your build \ghpr{3970}.
+}
+
+\note{feature}{
+  \ghuser{deadNightTiger} added a
+  \link{\code{fly completion}}{https://concourse-ci.org/fly.html#fly-completion}
+  subcommand that allows \code{fly} to output autocompletion for the \code{bash}
+  and \code{zsh} shells \ghpr{4012}.
+}
+
+\note{feature}{
+  When you abort a pending build before it gets scheduled, the build page will
+  now report it as 'cancelled' instead of showing a loading spinner forever
+  \ghpr{3922}.
+}
+
+\note{feature}{
+  The CSS optimizer used in building the web UI has been upgraded, so the
+  resulting CSS is slightly smaller, which should result in some faster page
+  loads \ghpr{4004}.
 }
 
 \note{fix}{
@@ -59,23 +80,11 @@
   \ghpr{131}{s3-resource}.
 }
 
-\note{feature}{
-  Improved the appearance of the sidebar (re-introduced in \ghrelease{v5.2.0})
-  in response to
-  \link{user feedback}{https://github.com/concourse/concourse/issues/3872}.
-  Teams and pipelines are now easier to distinguish, and there are nicely styled
-  tooltips for long items \ghpr{4032}.
-}
-
 \note{fix}{
-  Fixed a \link{bug}{https://github.com/concourse/concourse/issues/3803} where,
-  if your local machine is running Mac or Linux and you run \code{fly execute}
-  with \code{--input} against a cluster with a mix of Linux and Windows workers,
-  your files could get uploaded to a Windows worker, where ther permission
-  metadata would be stripped off. Now \code{fly execute} makes sure
-  only to upload user artifacts to workers matching the
-  \link{\code{platform}}{https://concourse-ci.org/tasks.html#task-platform}
-  of the task being executed \ghpr{4066}.
+  \ghuser{robwhitby} fixed an
+  \link{issue}{https://github.com/concourse/concourse/issues/4005} where
+  re-checking a resource would cause the metadata from its latest version to be
+  erased \ghpr{4028}.
 }
 
 \note{fix}{
@@ -92,35 +101,26 @@
 }
 
 \note{fix}{
-  \ghuser{robwhitby} fixed an
-  \link{issue}{https://github.com/concourse/concourse/issues/4005} where
-  re-checking a resource would cause the metadata from its latest version to be
-  erased \ghpr{4028}.
+  Fixed a regression found recently involving
+  \link{momentum based scrolling}{https://github.com/concourse/concourse/issues/3956}
+  on build pages on iOS browsers 
+  The fix was also applied to the sidebar and the dashboard \ghpr{4050}
 }
 
-\note{feature}{
-  \ghuser{deadNightTiger} added a
-  \link{\code{fly completion}}{https://concourse-ci.org/fly.html#fly-completion}
-  subcommand that allows \code{fly} to output autocompletion for the \code{bash}
-  and \code{zsh} shells \ghpr{4012}.
+\note{fix}{
+  The BOSH Backup and Restore job for the database now works properly if you
+  provide your database configuration via a BOSH link. Before, it would always
+  use a hardcoded default if you didn't explicitly specify, causing BOSH links
+  to be ignored \ghpr{41}{concourse-bosh-release}.
 }
 
-\note{feature}{
-  When you manually trigger a build through the web UI, the 'prep' section at
-  the top of the build page now shows a spinner on the entries marked
-  "discovering new versions of..." while the resource checks are in progress.
-  As the checks resolve, the spinners will become checkmarks, so you'll have a
-  better sense of what might be holding up your build \ghpr{3970}.
-}
-
-\note{feature}{
-  When you abort a pending build before it gets scheduled, the build page will
-  now report it as 'cancelled' instead of showing a loading spinner forever
-  \ghpr{3922}.
-}
-
-\note{feature}{
-  the CSS optimizer used in building the web UI was upgraded, so the resulting
-  CSS is slightly smaller, which should result in some faster page loads
-  \ghpr{4004}.
+\note{fix}{
+  Fixed a \link{bug}{https://github.com/concourse/concourse/issues/3803} where,
+  if your local machine is running Mac or Linux and you run \code{fly execute}
+  with \code{--input} against a cluster with a mix of Linux and Windows workers,
+  your files could get uploaded to a Windows worker, where ther permission
+  metadata would be stripped off. Now \code{fly execute} makes sure
+  only to upload user artifacts to workers matching the
+  \link{\code{platform}}{https://concourse-ci.org/tasks.html#task-platform}
+  of the task being executed \ghpr{4066}.
 }
