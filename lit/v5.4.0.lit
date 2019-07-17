@@ -14,6 +14,17 @@
   \bold{note:} this will require upgrading your workers \ghpr{3880}.
 }
 
+\note{feature}{
+  Because of the efficiency gained from employing Zstandard compression to
+  volume streaming, the CPU on the web and worker nodes is no longer a limiting
+  factor. Now volumes will be streamed over multiple parallel connections,
+  and we have seen some very exciting improvements in the time taken to
+  initialize build steps. You can see some of our measurements in the discussion
+  on
+  \link{this issue}{https://github.com/concourse/concourse/issues/3992}
+  \ghpr{3993}.
+}
+
 \note{feature,breaking}{
   On the build page all steps are now collapsed by default. This means that the
   build page loads faster, but if you want to watch the logs in real time, you
