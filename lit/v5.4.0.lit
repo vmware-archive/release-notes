@@ -21,6 +21,13 @@
 }
 
 \note{fix}{
+  The BOSH Backup and Restore job for the database now works properly if you
+  provide your database configuration via a BOSH link. Before, it would always
+  use a hardcoded default if you didn't explicitly specify, causing BOSH links
+  to be ignored \ghpr{41}{concourse-bosh-release}.
+}
+
+\note{fix}{
   Fixed a regression found recently involving
   \link{momentum based scrolling}{https://github.com/concourse/concourse/issues/3956}
   on build pages on iOS browsers 
