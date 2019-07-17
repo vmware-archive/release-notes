@@ -85,6 +85,13 @@
 }
 
 \note{fix}{
+  \ghuser{cappyzawa} fixed a small issue where the \code{-j} or \code{--json}
+  flag was not honored when running
+  \link{\code{fly get-team}}{https://concourse-ci.org/managing-teams.html#fly-get-team}
+  \ghpr{4046}.
+}
+
+\note{fix}{
   \ghuser{robwhitby} fixed an
   \link{issue}{https://github.com/concourse/concourse/issues/4005} where
   re-checking a resource would cause the metadata from its latest version to be
