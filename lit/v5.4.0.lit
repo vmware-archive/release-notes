@@ -42,7 +42,7 @@
 \note{feature}{
   \ghuser{maryamklabib} optimized the \resource{pool} - \code{check} and
   \code{in} scripts will run faster by using shallow cloning
-  \pr{49}{pool-resource}.
+  \ghpr{49}{pool-resource}.
 }
 
 \note{feature}{
