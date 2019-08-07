@@ -1,0 +1,31 @@
+\use-plugin{concourse-docs}
+
+\release-version{5.4.1}
+
+This release is about fixing some unintended consequences of switching to
+Zstandard compression in \ghrelease{v5.4.0}. More specifically, having our
+Go code depend on C libraries caused a few failure modes.
+
+\note{fix}{
+  When we first switched to using \code{cgo} to build \code{fly} (which was 
+  necessary in order to make use of Zstandard compression), unbeknownst to
+  us, \code{fly} started to depend on a system library for DNS resolution. This
+  meant that on systems that lacked this library (macOS in particular), \code{fly}
+  would \link{segfault}{https://github.com/concourse/concourse/issues/4141}.
+  Furthermore, the system library has different features than
+  the native Go version, so even on systems that had the library, fly would
+  \link{fail to resolve certain names}{https://github.com/concourse/concourse/issues/4149}.
+  We fixed these problems by building \code{fly} in a way that would still
+  use \code{cgo} but depend on the native Go DNS resolver \ghpr{59}{ci}.
+}
+
+\note{fix}{
+  On the server side, it turns out we had been a bit lax in freeing resources
+  associated with volume streams, but because we had been using pure Go
+  streaming and compression code, the Go garbage collector had helped us out.
+  In switching to a C-based compression library, failing to manually release
+  memory via Go APIs meant that the underlying memory allocated by the C code
+  was never freed, and several folks have observed
+  \link{server-side memory leaks}{https://github.com/concourse/concourse/issues/4150}
+  when using \ghrelease{v5.4.0}. We plugged those holes \ghpr{4182}, \ghpr{4199}.
+}
